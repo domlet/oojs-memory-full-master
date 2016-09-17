@@ -41,26 +41,30 @@ Game.prototype.getRemainingCardCount = function() {
 Game.prototype.setRemainingCardCount = function(count) {
   return this._remaining_card_count = count;
 }
-
+// Add the card you clicked to the 'current card' array
+// ?? Origin of 'card'
 Game.prototype.addCurrentCard = function(card) {
   this._current_cards.push(card);
 }
-
+// Start a new array for the next two clicks
 Game.prototype.clearCurrentCards = function() {
   this._current_cards = [];
 }
-
+// When game complete, run saveGame to send score to server
 Game.prototype.saveIfFinished = function() {
   if(this.getRemainingCardCount() == 0) {
     this.saveGame();
   }
 }
+// For matches, empty current array, remove from deck, save if remaining cards = 0
 Game.prototype.processMatch = function() {
   this.clearCurrentCards();
   this.removePairFromCount();
   this.saveIfFinished();
 }
-
+// ?? Where does 'amount' come from?
+// Maybe the AJAX experience?
+// Amount is somehow the score (number of clicks)
 Game.prototype.updateScore = function(amount) {
   this._score += amount;
 }
@@ -69,6 +73,7 @@ Game.prototype.getCards = function() {
   return this._cards;
 }
 // Why does the attribute need to be assigned the value of another variable?
+// Where is 'cards' defined
 Game.prototype.setCards = function(cards) {
   this._cards = cards;
 }
@@ -100,8 +105,8 @@ Array.prototype.shuffle = function() {
     index = Math.floor(Math.random() * counter);
     // Decrement counter by one
     counter--;
-    // Declare a variable with value of
-    // Just swapping two things
+    // Declare 'temp' just to hold stuff temporarily
+    // Just swapping two things...
     temp = this[counter];
     this[counter] = this[index];
     this[index] = temp;
