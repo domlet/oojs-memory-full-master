@@ -70,25 +70,39 @@ Game.prototype.getCards = function() {
 Game.prototype.setCards = function(cards) {
   this._cards = cards;
 }
-// Use jQuery post() method to send data to the server
+// Send data to server using jQuery post() method...
 // Standard syntax: $(selector).post(URL,data,function(data,status,xhr),dataType)
 //      URL = '/games'
 //     data = {"score": this._score} // Send as hash
-// function = function(response) // ?? Passes (data,status,xhr) and prints it in console
-// dataType = "JSON" // Nice JSON object
+// function = function(response)     // ?? Passes (data,status,xhr) and prints it in console
+// dataType = "JSON"                 // Nice JSON object
+// Sends a post to games_controller
 Game.prototype.saveGame = function() {
   $.post("/games", {"score": this._score}, function(response) {
     console.log(response)
   }, "JSON");
 }
-// Shuffle method
+
+// 303-947-0937 reubin
+
+// Shuffle method...
+// This is an Array prototype (not a Game.prototype)
 Array.prototype.shuffle = function() {
-  // this variable is an array of three things
+  // Is this variable an array of three things?
   var counter = this.length, temp, index;
-  // get random whole numbers
+
+  // var counter = this.length;
+  // var temp;
+  // var index;
+
+  // Start a while loop...
   while (counter > 0) {
+    // Set index to random whole number, multiplied by ?? value of counter
     index = Math.floor(Math.random() * counter);
+    // Decrement counter by one
     counter--;
+    // Declare a variable with value of
+    // Just swapping two things
     temp = this[counter];
     this[counter] = this[index];
     this[index] = temp;
