@@ -66,21 +66,26 @@ Game.prototype.updateScore = function(amount) {
 Game.prototype.getCards = function() {
   return this._cards;
 }
-// Why does the attribute need to be assigned the value of another var?
+// Why does the attribute need to be assigned the value of another variable?
 Game.prototype.setCards = function(cards) {
   this._cards = cards;
 }
-
+// Use jQuery post() method to send data to the server
+// Standard syntax: $(selector).post(URL,data,function(data,status,xhr),dataType)
+//      URL = '/games'
+//     data = {"score": this._score} // Send as hash
+// function = function(response) // ?? Passes (data,status,xhr) and prints it in console
+// dataType = "JSON" // Nice JSON object
 Game.prototype.saveGame = function() {
   $.post("/games", {"score": this._score}, function(response) {
     console.log(response)
   }, "JSON");
 }
-
+// Shuffle method
 Array.prototype.shuffle = function() {
-
+  // this variable is an array of three things
   var counter = this.length, temp, index;
-
+  // get random whole numbers
   while (counter > 0) {
     index = Math.floor(Math.random() * counter);
     counter--;
