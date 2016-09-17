@@ -36,9 +36,10 @@ View.prototype.resetScore = function() {
 View.prototype.updateScore = function(amount) {
   $("#score").text(parseInt($("#score").text()) + amount);
 }
-
+// jQuery each method iterates through each and takes arguments
 View.prototype.toggleCards = function(card_indexes, newClass) {
   var cards = this.getCards();
+  debugger
   $.each(card_indexes, function(index, card_index) {
     var card = $(cards[card_index]);
     card.removeClass();

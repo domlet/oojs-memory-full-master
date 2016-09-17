@@ -1,8 +1,9 @@
+// Creates an instance of each
 function Controller() {
   this._view = new View();
   this._game = new Game();
 };
-
+// function returns the property (better than calling it as a property)
 Controller.prototype.getView = function() {
   return this._view;
 }
@@ -14,7 +15,7 @@ Controller.prototype.getGame = function() {
 Controller.prototype.toggleCards = function(newClass) {
   this.getView().toggleCards(this.getGame().getCurrentCards(), newClass);
 }
-
+// Get
 Controller.prototype.setUpGame = function() {
   this.getGame().load();
   this.getView().setCardFaces(this.getGame().getCards());
@@ -29,13 +30,13 @@ Controller.prototype.updateScore = function(amount) {
   this.getGame().updateScore(amount);
   this.getView().updateScore(amount);
 }
-
+// creates an array of two (and calls the matching function)
 Controller.prototype.processCard = function(event) {
 
   this.updateScore(1); // need to move this to only update if successful click
-
+  // empty until you click on cards
   var current_cards = this.getGame().getCurrentCards();
-
+  // currentTarget is js method that makes thing you clicked the target
   if(current_cards.length < 2) {
     this.addCard(event.currentTarget);
   }
@@ -85,7 +86,7 @@ Controller.prototype.checkPairForMatch = function(pairOfCards) {
     setTimeout(this.processMismatch.bind(this), 1000);
   }
 }
-
+// i think .bind(this) changes 'this' from controller to event
 Controller.prototype.initialize = function() {
   this.getView().getResetButton().on("click", this.resetGame.bind(this));
   this.getView().getCards().on("click", this.processCard.bind(this));

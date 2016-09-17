@@ -1,7 +1,8 @@
+// New Game instance is initialized with these attributes.
 function Game() {
-  this._score = 0;
-  this._cards = [];
-  this._current_cards = [];
+  this._score = 0; // A score of 0
+  this._cards = []; // Empty array of cards
+  this._current_cards = []; // Empty array of current cards
   this._remaining_card_count = 20;
 }
 
