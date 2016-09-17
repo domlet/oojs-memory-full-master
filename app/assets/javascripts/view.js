@@ -71,11 +71,14 @@ View.prototype.toggleCards = function(card_indexes, newClass) {
     card.addClass(newClass);
   });
 }
-
+// See what icon a given card should show (tree, etc.)
 View.prototype.getCardClass = function(card_index) {
+  // Use jQuery to grab all the cards
+  // For the card in question (see arg), find the icon class and return it
   return $(this.getCards()[card_index]).find("i").attr("class");
 }
-
+// Hey card, where do you live?
+// given a div, determine the index position of that div within an array
 View.prototype.getCardLocation = function(card) {
   return this.getCards().index(card);
 }

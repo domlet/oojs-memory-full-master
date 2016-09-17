@@ -3,21 +3,28 @@ function Controller() {
   this._view = new View();
   this._game = new Game();
 };
-// function returns the property (better than calling it as a property)
+// Just a getter for the view instance
 Controller.prototype.getView = function() {
   return this._view;
 }
-
+// Just a getter for the game instance
 Controller.prototype.getGame = function() {
   return this._game;
 }
-
+// Gets current cards (1 or 2) from Game model
+// Passes those cards to the View
+// Asks View to run .toggleCards method those cards
 Controller.prototype.toggleCards = function(newClass) {
   this.getView().toggleCards(this.getGame().getCurrentCards(), newClass);
 }
-// Get
+// Get a deck from the model
+// Give the icons from the view
 Controller.prototype.setUpGame = function() {
+  // Use the Controller method .getGame (just a getter)...
+  // Load it up (model method gets a deck and shuffles)
   this.getGame().load();
+  // Ask the View instance to set icons for the cards...
+  // Only argument: (result of model method that gets all cards)
   this.getView().setCardFaces(this.getGame().getCards());
 }
 
