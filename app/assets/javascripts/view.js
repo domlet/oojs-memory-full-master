@@ -18,36 +18,55 @@ View.prototype.setCardFaces = function(card_faces) {
     // Execute this block...
     // Select each card div, find the icon tag in html <i>
     // .find("i") is totally jQuery which is why the "i" element is in quotes
-    //
+    // add the class corresponding to the [index] position (from CARD_FACES)
     $(card).find("i").addClass(card_faces[index]);
   });
 }
-
+// Call these two methods
 View.prototype.resetGame = function() {
   this.resetCards();
   this.resetScore();
 }
-
+// Turn cards back over
 View.prototype.resetCards = function() {
   $.each($("#cards div"), function(index, card){
+    // Remove the class that makes it white
     $(card).removeClass();
+    // Add the class that makes it pink
     $(card).addClass("hidden_card");
+    // Remove the class that shows the icon
     $(card).find("i").removeClass();
   });
 }
-
+// Use jQuery to reset score on the screen
 View.prototype.resetScore = function() {
   $("#score").text(0);
 }
-
+// Grab the text within the #score object
+// Turn it into a number (Use JavaScript parseInt() Function)
+// Add the amount (from argument)
+// Update the text within the #score object
 View.prototype.updateScore = function(amount) {
   $("#score").text(parseInt($("#score").text()) + amount);
 }
-// Use jQuery.each() method with arguments
+// Flips cards up or down
+// Pass in args:
+  // indexed for cards (one for clicks, two when turning pair back over)
+  // class to expose cards OR hide cards
+// Set a variable equal to array of card divs
 View.prototype.toggleCards = function(card_indexes, newClass) {
   var cards = this.getCards();
+  // Use jQuery.each() method with arguments:
+  // First argument: the one or two cards we're dealing with...
+  // Second argument: anonymous function
+    // Anonymous function also has two arguments...
+      // First argument: 'index' iterates through the index positions of the 'card_indexes' values
+      // Second argument: 'card_index' is the 0-19 index of the card in the divs array
   $.each(card_indexes, function(index, card_index) {
+    // We execute a block...
+    // Declare variable with value = the div (selected by index position)
     var card = $(cards[card_index]);
+    // For that div, remove existing classes and add class (from argument)
     card.removeClass();
     card.addClass(newClass);
   });
