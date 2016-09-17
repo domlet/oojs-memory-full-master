@@ -62,11 +62,11 @@ Game.prototype.processMatch = function() {
 Game.prototype.updateScore = function(amount) {
   this._score += amount;
 }
-
+// A getter function
 Game.prototype.getCards = function() {
   return this._cards;
 }
-
+// Why does the attribute need to be assigned the value of another var?
 Game.prototype.setCards = function(cards) {
   this._cards = cards;
 }
