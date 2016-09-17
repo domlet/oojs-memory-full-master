@@ -1,17 +1,24 @@
+// New View instance is initialized with no attributes
 function View() {
 }
-
+// Give us an array of the card divs (within div#cards)
 View.prototype.getCards = function() {
   return $("#cards div");
 }
-
+// Use jQuery to grab the Reset button (the only object of this type on the page)
 View.prototype.getResetButton = function() {
   return $("input[type='button']");
 }
-
+// Sets icons for cards using css!!
 View.prototype.setCardFaces = function(card_faces) {
   var that = this;
+  // Use jQuery.each() with 'getCards' (which is an array of divs) as argument
+  // This turns array into hash with indexes as keys
   $.each(this.getCards(), function(index, card){
+    // Execute this block...
+    // Select each card div, find the icon tag in html <i>
+    // .find("i") is totally jQuery which is why the "i" element is in quotes
+    //
     $(card).find("i").addClass(card_faces[index]);
   });
 }
