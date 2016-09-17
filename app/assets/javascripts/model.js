@@ -1,12 +1,13 @@
 // New Game instance is initialized with these attributes.
 function Game() {
-  this._score = 0; // A score of 0
+  this._score = 0;  // Score of zero
   this._cards = []; // Empty array of cards
   this._current_cards = []; // Empty array of current cards
-  this._remaining_card_count = 20;
+  this._remaining_card_count = 20; // Twenty cards to play
 }
-
-Game.prototype.CARD_FACES = ["fa fa-5x fa-camera-retro",
+// Uses icons from 'font-awesome' in application.css
+Game.prototype.CARD_FACES = [
+  "fa fa-5x fa-camera-retro",
   "fa fa-5x fa-flag",
   "fa fa-5x fa-paper-plane",
   "fa fa-5x fa-leaf",
@@ -17,7 +18,7 @@ Game.prototype.CARD_FACES = ["fa fa-5x fa-camera-retro",
   "fa fa-5x fa-star",
   "fa fa-5x fa-music"
 ];
-
+//
 Game.prototype.load = function() {
   this.setCards(this.CARD_FACES.concat(this.CARD_FACES));
   this.getCards().shuffle();
