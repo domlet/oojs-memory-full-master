@@ -82,9 +82,6 @@ Game.prototype.saveGame = function() {
     console.log(response)
   }, "JSON");
 }
-
-// 303-947-0937 reubin
-
 // Shuffle method...
 // This is an Array prototype (not a Game.prototype)
 Array.prototype.shuffle = function() {
