@@ -23,7 +23,7 @@ Game.prototype.load = function() {
   this.setCards(this.CARD_FACES.concat(this.CARD_FACES));
   this.getCards().shuffle(); // chained methods, just setting and getting
 }
-// just a getter
+// just a getter for an array
 Game.prototype.getCurrentCards = function() {
   return this._current_cards;
 }
@@ -33,7 +33,7 @@ Game.prototype.getCurrentCards = function() {
 Game.prototype.removePairFromCount = function() {
   this.setRemainingCardCount(this.getRemainingCardCount() - 2);
 }
-// Just a getter
+// Just a getter for an integer
 Game.prototype.getRemainingCardCount = function() {
   return this._remaining_card_count;
 }
@@ -72,8 +72,8 @@ Game.prototype.updateScore = function(amount) {
 Game.prototype.getCards = function() {
   return this._cards;
 }
-// Why does the attribute need to be assigned the value of another variable?
-// Where is 'cards' defined
+// Assigns to the attribute, the value of the argument
+// (The argument is an array of strings)
 Game.prototype.setCards = function(cards) {
   this._cards = cards;
 }
